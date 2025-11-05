@@ -1,0 +1,41 @@
+<h1>Gerenciador de Benefícios</h1>
+
+<h2>Lista de Benefícios</h2>
+<table border="1" width="100%" style="border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Valor</th>
+    <th>Ações</th>
+  </tr>
+  <tr *ngFor="let b of beneficios">
+    <td>{{b.id}}</td>
+    <td>{{b.nome}}</td>
+    <td>{{b.valor | currency:'BRL'}}</td>
+    <td>
+      <button (click)="selecionar(b)">Editar</button>
+      <button (click)="deletar(b.id)">Excluir</button>
+    </td>
+  </tr>
+</table>
+
+<h3>{{ selecionado ? 'Editar' : 'Novo' }} Benefício</h3>
+
+<div>
+  <label>Nome:</label>
+  <input type="text" [(ngModel)]="selecionado.nome" name="nome" id="valor" />
+</div>
+<div>
+  <label>Descrição:</label>
+  <input type="text" [(ngModel)]="selecionado.descricao" name="nome" id="valor" />
+</div>
+<div>
+  <label>Valor:</label>
+  <input type="number" [(ngModel)]="selecionado.valor" name="valor" id="valor" />
+</div>
+
+<button (click)="salvar()">Salvar</button>
+<button (click)="novo()">Novo Beneficio</button>
+
+
+<button (click)="transferir()">Transferir Beneficio</button>
